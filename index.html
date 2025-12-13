@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRENDSTERS - Elevate Your Fit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #FFD700, #FFFFFF);
+            color: #000000;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .hero-content {
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: #CCCCCC;
+        }
+        .hero .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #111111;
+            text-align: center;
+        }
+        .about p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #CCCCCC;
+        }
+
+        /* Categories Section */
+        .categories {
+            background-color: #000000;
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .category-card {
+            background: linear-gradient(135deg, #333333, #666666);
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        /* Featured Products Section */
+        .featured {
+            background-color: #111111;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: #333333;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-card .content {
+            padding: 20px;
+        }
+        .product-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        .product-card .price {
+            color: #FFD700;
+            font-weight: 600;
+        }
+        .discount-badge {
+            background: #FFD700;
+            color: #000000;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background-color: #000000;
+            text-align: center;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .feature {
+            max-width: 200px;
+        }
+        .feature h4 {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        /* Launch Offer Banner */
+        .launch-banner {
+            background: linear-gradient(45deg, #FFD700, #FFFFFF);
+            color: #000000;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .launch-banner h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #111111;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background-color: #333333;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #CCCCCC;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        /* Instagram Section */
+        .instagram {
+            background-color: #000000;
+            text-align: center;
+        }
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .instagram-item {
+            height: 200px;
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111111;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #CCCCCC;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icons a {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #FFD700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .hero .btn-group { flex-direction: column; align-items: center; }
+            .section h2 { font-size: 2rem; }
+            .categories-grid, .products-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .features { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>TRENDSTERS – Elevate Your Fit</h1>
+            <p>Oversized • Streetwear • Gym Essentials</p>
+            <div class="btn-group">
+                <a href="#categories" class="btn">Shop Now</a>
+                <a href="#launch-banner" class="btn">Launching Soon – Up to 50% OFF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Brand Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2>About Trendsters</h2>
+            <p>Trendsters blends performance, comfort & street style for gym and daily wear. Elevate your wardrobe with premium, modern pieces designed for the urban athlete.</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="section categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="window.location.href='oversized-tshirts.html'">
+                    <h3>Oversized T-Shirts</h3>
+                </div>
+                <div class="category-card" onclick="window.location.href='compression-tshirts.html'">
+                    <h3>Compression T-Shirts</h3>
+                </div>
+                <div class="category-card" onclick="window.location.href='hoodies.html'">
+                    <h3>Hoodies</h3>
+                </div>
+                <div class="category-card" onclick="window.location.href='streetwear.html'">
+                    <h3>Streetwear</h3>
+                </div>
+                <div class="category-card" onclick="window.location.href='gym-essentials.html'">
+                    <h3>Gym Essentials</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="section featured">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="discount-badge">Up to 50% OFF</div>
+                    <img src="https://via.placeholder.com/300x250/333333/FFFFFF?text=Product+1" alt="Product 1">
+                    <div class="content">
+                        <h4>Premium Hoodie</h4>
+                        <p class="price">$49.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="discount-badge">Up to 50% OFF</div>
+                    <img src="https://via.placeholder.com/300x250/333333/FFFFFF?text=Product+2" alt="Product 2">
+                    <div class="content">
+                        <h4>Compression Tee</h4>
+                        <p class="price">$29.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="discount-badge">Up to 50% OFF</div>
+                    <img src="https://via.placeholder.com/300x250/333333/FFFFFF?text=Product+3" alt="Product 3">
+                    <div class="content">
+                        <h4>Streetwear Pants</h4>
+                        <p class="price">$59.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Trendsters Section -->
+    <section class="section why-choose">
+        <div class="container">
+            <h2>Why Choose Trendsters</h2>
+            <div class="features">
+                <div class="feature">
+                    <h4>Premium Fabric</h4>
+                    <p>High-quality materials for durability and comfort.</p>
+                </div>
+                <div class="feature">
+                    <h4>Perfect Fit</h4>
+                    <p>Designed for optimal performance in gym and street settings.</p>
+                </div>
+                <div class="feature">
+                    <h4>Made for Gym & Daily Wear</h4>
+                    <p>Versatile styles for every occasion.</p>
+                </div>
+                <div class="feature">
+                    <h4>Affordable Luxury</h4>
+                    <p>Premium quality at accessible prices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Launch Offer Banner -->
+    <section id="launch-banner" class="launch-banner">
+        <div class="container">
+            <h3>Launching Day Offer – Up to 50% OFF</h3>
+            <p>Countdown to Launch:</p>
+            <div id="countdown">00:00:00</div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Trendsters gear is perfect for my gym sessions – stylish and comfortable!"</p>
+                    <p class="author">- Alex, Fitness Enthusiast</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Love the streetwear collection. Feels premium without breaking the bank."</p>
+                    <p class="author">- Jordan, Streetwear Fan</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Elevated my daily look with Trendsters. Highly recommend!"</p>
+                    <p class="author">- Taylor, Urban Athlete</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram / Social Proof Section -->
+    <section class="section instagram">
+        <div class="container">
+            <h2>Follow Us on Instagram</h2>
+            <div class="instagram-grid">
+                <div class="instagram-item">Post 1</div>
+                <div class="instagram-item">Post 2</div>
+                <div class="instagram-item">Post 3</div>
+                <div class="instagram-item">Post 4</div>
+                <div class="instagram-item">Post 5</div>
+                <div class="instagram-item">Post 6</div>
+            </div>
+            <a href="https://instagram.com/trendstersstore.in" class="btn" style="margin-top: 20px;">Follow @trendstersstore.in</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Quick Links</a>
+                <a href="#">Policies</a>
+                <a href="#">Contact</a>
+            </div>
+            <
